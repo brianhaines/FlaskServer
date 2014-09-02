@@ -1,0 +1,1 @@
+marketData,sensational,eastdb.coppf6e6y02f.us-east-1.rds.amazonaws.com,yahooPrices

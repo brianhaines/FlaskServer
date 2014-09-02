@@ -1,0 +1,1 @@
+web: gunicorn yahooServer:app --log-file -
