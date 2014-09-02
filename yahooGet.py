@@ -9,8 +9,9 @@ from time import sleep
 
 #This is a text file with my db username and PW etc.
 params = open('dbparams.txt').read()
-
 #params = open('/home/ubuntu/Yahoo/dbparams.txt').read()
+
+
 params =  params.split(',')
 
 
@@ -26,7 +27,7 @@ while dt.now()<stopTime:
 	db = mysql.connect(user=params[0],password=params[1],host=params[2],database=params[3])
 	cursor = db.cursor()
 
-	cursor.execute('''SELECT Ticker, qTime, tBucket, avg(tPrice),max(tPrice),min(tPrice) FROM livePrices WHERE Ticker=%s AND qDate=%s AND tPrice!='Null' GROUP BY tBucket ORDER BY qTime DESC LIMIT 10''',(ticker, qDate))
+	cursor.execute('''SELECT Ticker, qTime, tBucket, avg(tPrice),max(tPrice),min(tPrice) FROM livePrices WHERE Ticker=%s AND qDate='2014-09-02' AND tPrice!='Null' GROUP BY tBucket ORDER BY qTime DESC LIMIT 10''',(ticker,))
 
 	print(dt.now())
 	for each in cursor:
