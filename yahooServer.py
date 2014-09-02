@@ -12,7 +12,7 @@ def hello_world():
     return 'Hello World!'
 
 @app.route('/XOM')
-def hello_world():
+def hello_world_ticker():
     return 'EXXON World!'
 
 if __name__ == '__main__':
