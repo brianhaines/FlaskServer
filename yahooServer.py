@@ -11,9 +11,11 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World!'
 
-@app.route('/XOM')
-def hello_world_ticker():
-    return 'EXXON World!'
+@app.route('/<ticker>')
+def stock_tip(ticker):
+    # Hot stock tip here:
+    return '%s is so hot right now.' % ticker
+
 
 if __name__ == '__main__':
 	port=int(os.environ.get('PORT', 5000))
