@@ -20,10 +20,14 @@ def hello_world():
 
 @app.route('/prices/<stkReq>')
 def stock_tip(stkReq):
-	s = stkReq.split('&')
 	
-	tkr = s[0]
-	n = int(s[1])
+	try:
+		s = stkReq.split('&')
+		tkr = s[0]
+		n = int(s[1])
+	except:
+		n=120
+
 	qDate = '2014-09-03'
 	
 	db = mysql.connect(user=params[0],password=params[1],host=params[2],database=params[3])
