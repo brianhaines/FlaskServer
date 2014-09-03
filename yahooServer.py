@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-	return 'Hello World!'
+	return 'To get some price history, add /prices/ to this address. Also add a ticker and the number of records you need. eg /prices/XOM&360'
 
 @app.route('/prices/<stkReq>')
 def stock_tip(stkReq):
