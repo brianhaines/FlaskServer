@@ -20,7 +20,6 @@ cursor.execute('''SELECT tBucket, avg(tPrice) FROM livePrices WHERE Ticker=%s AN
 
 
 for each in cursor:
-
 	outPut = [str(each[0]),each[1]]
 
 print(outPut)

@@ -13,7 +13,6 @@ params =  params.split(',')
 app = Flask(__name__)
 
 
-
 @app.route('/')
 def hello_world():
 	return 'Hello World!'
@@ -25,12 +24,12 @@ def stock_tip(ticker):
 	db = mysql.connect(user=params[0],password=params[1],host=params[2],database=params[3])
 	cursor = db.cursor()
 
-	cursor.execute('''SELECT tBucket, avg(tPrice) FROM livePrices WHERE Ticker=%s AND qDate='2014-09-02' AND tPrice!='Null' GROUP BY tBucket ORDER BY qTime DESC LIMIT 1''',(tkr,))
+	cursor.execute('''SELECT tBucket, avg(tPrice),max(tPrice),min(tPrice) FROM livePrices WHERE Ticker=%s AND qDate='2014-09-03' AND tPrice!='Null' GROUP BY tBucket ORDER BY qTime DESC LIMIT 1''',(tkr,))
 
 	for each in cursor:
-		outPut = [str(each[0]),each[1]]
+		outPut = [str(each[0]),round(each[1],2),round(each[2],2),round(each[3],2)]
 	
-	return '%s is %s at %s' % (tkr,outPut[1],outPut[0])
+	return '%s Price: avg: %s hi: %s lo: %s  at %s' % (tkr,outPut[1],outPut[2],outPut[3],outPut[0],)
 
 
 if __name__ == '__main__':
