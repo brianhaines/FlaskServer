@@ -40,8 +40,8 @@ def stock_tip(stkReq):
 
 
 @app.route('/keystats/<stkReq>')
-def stock_tip(stkReq):
-	return "YEAH BUDDY!"
+def stock_stats(stkReq):
+	return "YEAH BUDDY! "+stkReq
 
 
 if __name__ == '__main__':
