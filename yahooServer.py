@@ -3,6 +3,7 @@ import os
 import mysql.connector as mysql
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 import json
+from datetime import datetime as dt
 
 #This is a text file with my db username and PW etc.
 params = open('dbparams.txt').read()
@@ -28,12 +29,12 @@ def stock_tip(stkReq):
 	except:
 		n=120
 
-	qDate = '2014-09-03'
-	
+	qDate = '2014-09-04'
+	#qDate = dt.now().date().isoformat()
 	db = mysql.connect(user=params[0],password=params[1],host=params[2],database=params[3])
 	cursor = db.cursor()
 
-	cursor.execute('''SELECT qDate, tBucket, avg(tPrice),max(tPrice),min(tPrice) FROM livePrices WHERE Ticker=%s AND qDate=%s AND tPrice!='Null' GROUP BY tBucket ORDER BY qTime DESC LIMIT %s''',(tkr,qDate,n))
+	cursor.execute('''SELECT qDate, tBucket, avg(tPrice),max(tPrice),min(tPrice) FROM livePrices WHERE Ticker=%s AND tPrice!='Null' GROUP BY qDate, tBucket ORDER BY qDate DESC,tBucket DESC LIMIT %s''',(tkr,n))
 
 	outPut=[]
 	for each in cursor:
