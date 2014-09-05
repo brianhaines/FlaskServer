@@ -29,8 +29,7 @@ def stock_tip(stkReq):
 	except:
 		n=120
 
-	qDate = '2014-09-04'
-	#qDate = dt.now().date().isoformat()
+	
 	db = mysql.connect(user=params[0],password=params[1],host=params[2],database=params[3])
 	cursor = db.cursor()
 
