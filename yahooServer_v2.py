@@ -6,9 +6,9 @@ import json
 from datetime import datetime as dt
 
 #This is a text file with my db username and PW etc.
-params = open('dbparams.txt').read()
+#params = open('dbparams.txt').read()
 #params = open('/home/ubuntu/Yahoo/dbparams.txt').read()
-params =  params.split(',')
+#params =  params.split(',')
 
 
 # create our little application :)
