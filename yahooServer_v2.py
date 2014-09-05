@@ -30,7 +30,7 @@ def stock_tip(stkReq):
 		n=120
 
 	
-	db = mysql.connect(user=params[0],password=params[1],host=params[2],database=params[3])
+	db = mysql.connect(user=os.environ.get('dbUser'),password=os.environ.get('dbPW'),host=os.environ.get('dbHost'),database=os.environ.get('dbName'))
 	cursor = db.cursor()
 
 	cursor.execute('''SELECT qDate, tBucket, avg(tPrice),max(tPrice),min(tPrice) FROM livePrices WHERE Ticker=%s AND tPrice!='Null' GROUP BY qDate, tBucket ORDER BY qDate DESC,tBucket DESC LIMIT %s''',(tkr,n))
@@ -49,7 +49,6 @@ def stock_stats(stkReq):
 
 
 if __name__ == '__main__':
-	print(os.environ.get('a'))
 	port=int(os.environ.get('PORT', 5000))
 	app.run(port=port)
 
