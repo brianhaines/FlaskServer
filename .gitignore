@@ -1,2 +1,6 @@
 .env
+__pycache__
 __pycache__/
+yahooGetOne.py
+yahooServer.py
+fromApp.py
