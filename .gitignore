@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 .env
 __pycache__
 __pycache__/
 yahooGetOne.py
 yahooServer.py
 fromApp.py
+=======
+.env
+>>>>>>> d9a2bc6ac57d3370986f1bc0243a0aeaee0de6b2
